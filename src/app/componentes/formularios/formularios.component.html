@@ -1,0 +1,92 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Formularios</h2>
+    <br>
+
+    <h4><u>Template Driven</u></h4>
+    <br>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" [(ngModel)]="formu.nombre">
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input class="form-control" type="text" id="apellido" name="apellido" [(ngModel)]="formu.apellido">
+        </div>
+
+        <div class="form-group">
+            <label for="edad">Edad</label>
+            <input class="form-control" type="number" id="edad" name="edad" [(ngModel)]="formu.edad">
+        </div>
+
+        <br>
+        <button class="btn btn-success" (click)="enviar()">Enviar</button>
+
+    </form>
+
+    <hr>
+
+    <h4><u>Reactive Form</u></h4>
+    <br>
+    <form [formGroup]="f" autocomplete="off">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" id="nombre" formControlName="nombre">
+        </div>
+        <div *ngIf="f.controls.nombre.errors && f.controls.nombre.dirty" class="alert alert-danger">
+            <div *ngIf="f.controls.nombre.errors.required">
+                Campo obligatorio
+            </div>
+            <div *ngIf="f.controls.nombre.errors.minlength">
+                La cantidad mínima de caracteres para este campo es
+                {{f.controls.nombre.errors.minlength.requiredLength}}, Escribí
+                {{f.controls.nombre.errors.minlength.actualLength}}
+            </div>
+            <div *ngIf="f.controls.nombre.errors.maxlength">
+                La cantidad máxima de caracteres para este campo es
+                {{f.controls.nombre.errors.maxlength.requiredLength}}, Escribí
+                {{f.controls.nombre.errors.maxlength.actualLength}}
+            </div>
+            <div *ngIf="f.controls.nombre.errors.conEspacios">
+                No se permiten espacios intermedios para este campo
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input class="form-control" type="text" id="apellido" formControlName="apellido">
+        </div>
+
+        <div class="form-group">
+            <label for="edad">Edad</label>
+            <input class="form-control" type="number" id="edad" formControlName="edad">
+        </div>
+
+        <div formGroupName="contacto">
+            <div class="form-group">
+                <label for="email">email</label>
+                <input class="form-control" type="email" id="email" formControlName="email">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">telefono</label>
+                <input class="form-control" type="tel" id="telefono" formControlName="telefono">
+            </div>
+        </div>
+
+        <br>
+        <button class="btn btn-success" [disabled]="!f.valid" (click)="enviar2()">Enviar</button>
+
+    </form>
+
+    <br>
+    <h5>Estados de error del campo nombre del Form Reactive</h5>
+    <pre>{{ f.controls.nombre.errors | json }}</pre>
+
+    <br>
+    <h5>Datos del Form Reactive</h5>
+    <pre>{{ f.value | json }}</pre>
+
+
+</div>

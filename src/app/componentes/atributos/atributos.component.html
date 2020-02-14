@@ -1,0 +1,40 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Atributos</h2>
+    <br>
+
+    <h4><u>directiva [ngStyle]</u></h4>
+    <button class="btn btn-success my-3" (click)="estado1=!estado1">Cambiar</button>
+    <p
+        [ngStyle]="{'backgroundColor': estado1? 'green':'red','color':'white', 'padding': '10px', 'borderRadius': '10px'}">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias hic assumenda ab ullam harum perferendis quas
+        placeat distinctio numquam obcaecati inventore nulla atque eligendi voluptatem, vero repellat ipsam dolor.
+        Nobis.
+    </p>
+
+    <hr>
+
+    <h4><u>directiva [ngClass]</u></h4>
+    <button class="btn btn-success my-3" (click)="estado2=!estado2">Cambiar</button>
+    <p [ngClass]="{'btn':true, 'btn-success':estado2, 'btn-danger':!estado2}">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias hic assumenda ab ullam harum perferendis quas
+        placeat distinctio numquam obcaecati inventore nulla atque eligendi voluptatem, vero repellat ipsam dolor.
+        Nobis.
+    </p>
+
+    <hr>
+    <h4><u>directiva Personalizada</u></h4>
+    <p [appResaltar]="color" [colorBase]="'black'">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam quidem cum quaerat recusandae iusto, magni
+        laborum tempora assumenda consequuntur magnam modi unde cumque, quos quae corporis perferendis deserunt nesciunt
+        est.
+    </p>
+
+    <div>
+        <input type="radio" name="colors" (click)="color='purple'"> PURPLE
+        <input type="radio" name="colors" (click)="color='orange'"> ORANGE
+        <input type="radio" name="colors" (click)="color='green'"> GREEN
+        <input type="radio" name="colors" (click)="color=''" checked> NINGUNO
+    </div>
+
+
+</div>

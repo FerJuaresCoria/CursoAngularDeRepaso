@@ -1,0 +1,30 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Entradas</h2>
+    <hr>
+
+    <h4><u>Interpolación</u></h4>
+    <p>{{mensaje}}</p>
+    <hr>
+
+    <h4><u>Property Binding</u></h4>
+    <input type="text" value="123"><br>
+    <input type="text" value="{{valor}}"> {{valor}}<br>
+    <input type="text" [value]="valor2"> {{valor2}}<br>
+    <hr>
+
+    <h4><u>Event Binding</u></h4>
+    <button class="btn btn-info my-3" (click)="contar()">Contar {{contador}}</button>
+    <hr>
+
+    <h4><u>Doble Data Binding</u></h4>
+
+    <h5><u>Manual</u></h5>
+    <input type="text" [value]="valor3" (input)="actualizar($event)"> {{valor3}} <br>
+    <br>
+
+    <h5><u>Automático</u></h5>
+    <input type="text" [(ngModel)]="valor4"> {{valor4}} <br>
+
+
+
+</div>

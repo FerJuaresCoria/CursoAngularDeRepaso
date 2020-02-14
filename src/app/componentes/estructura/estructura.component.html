@@ -1,0 +1,80 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Estructura</h2>
+    <hr>
+
+    <h4><u>directiva *ngIf</u></h4>
+
+    <button class="btn btn-success my-3" (click)="mostrar=!mostrar">{{mostrar? 'Ocultar':'Mostrar'}}</button>
+    <p *ngIf="mostrar" class="alert alert-info">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias hic assumenda ab ullam harum perferendis quas
+        placeat distinctio numquam obcaecati inventore nulla atque eligendi voluptatem, vero repellat ipsam dolor.
+        Nobis.
+    </p>
+
+    <h4><u>directiva *ngFor</u></h4>
+
+    <ul>
+        <li *ngFor="let persona of personas">
+            {{persona}}
+        </li>
+    </ul>
+
+    <h4><u>datos desde el servicio</u></h4>
+    <ul>
+        <li *ngFor="let usuario of usuarios">
+            {{usuario}}
+        </li>
+    </ul>
+    <hr>
+    <h4><u>mensajes desde el servicio</u></h4>
+    <input type="text" [(ngModel)]="mensajeAux">
+    <button class="btn btn-info m-3" (click)="pushMensaje(mensajeAux)">PUSH</button>
+    <button class="btn btn-info m-3" (click)="popMensaje()">POP</button>
+    <ul>
+        <li *ngFor="let mensaje of mensajes">
+            {{mensaje}}
+        </li>
+    </ul>
+    <hr>
+
+    <button class="btn btn-info my-3" (click)="agregar()">Agregar alumno</button>
+    <div *ngIf="alumnos.length">
+        <ul>
+            <li *ngFor="let alumno of alumnos">
+                <!-- <pre>{{alumno | json}}</pre> -->
+                {{alumno.nombre}} {{ alumno.apellido}}
+            </li>
+        </ul>
+
+        <table class="table">
+            <tr class="bg-success text-white">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Curso</th>
+                <th>Foto</th>
+            </tr>
+            <tr class="bg-info text-white" *ngFor="let alumno of alumnos">
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido}}</td>
+                <td>{{alumno.edad}}</td>
+                <td>{{alumno.curso?'Si':'No'}}</td>
+                <td>
+                    <img [src]="alumno.foto" width="50" alt="foto de {{alumno.nombre}}">
+                </td>
+            </tr>
+        </table>
+
+        <br>
+
+        <div class="media alert alert-info" *ngFor="let alumno of alumnos;index as i">
+            <img [src]="alumno.foto" width="120" alt="foto de {{alumno.nombre}}">
+            <div class="media-body ml-3">
+                <p>Nombre: <b>{{alumno.nombre}} {{alumno.apellido}}</b></p>
+                <p><i>Edad: {{alumno.edad}}</i></p>
+                Hizo el curso <input type="checkbox" [(ngModel)]="alumno.curso">
+                <button class="btn btn-danger ml-3" (click)="borrar(i)">X</button>
+            </div>
+        </div>
+    </div>
+</div>

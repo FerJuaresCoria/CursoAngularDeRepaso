@@ -1,0 +1,25 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Usuarios</h2>
+    <hr>
+
+    <h4><u>datos desde el servicio</u></h4>
+    <ul>
+        <li *ngFor="let usuario of usuarios">
+            {{usuario}}
+        </li>
+    </ul>
+
+    <hr>
+    <h4><u>mensajes desde el servicio</u></h4>
+    <input type="text" [(ngModel)]="mensajeAux">
+    <button class="btn btn-info m-3" (click)="pushMensaje(mensajeAux)">PUSH</button>
+    <button class="btn btn-info m-3" (click)="popMensaje()">POP</button>
+    <ul>
+        <li *ngFor="let mensaje of mensajes">
+            {{mensaje}}
+        </li>
+    </ul>
+
+
+
+</div>

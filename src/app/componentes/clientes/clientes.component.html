@@ -1,0 +1,22 @@
+<div class="jumbotron mt-3">
+    <h2>Componente Clientes</h2>
+    <hr>
+
+    <button class="btn btn-success m-3" (click)="obtenerClientes()">GET</button>
+    <button class="btn btn-info m-3" (click)="enviarCliente()">POST</button>
+
+    <div class="media alert alert-info" *ngFor="let cliente of clientes;index as i">
+        <img [src]="cliente.foto" width="200" [ngStyle]="{'borderRadius': '10px'}"  alt="foto de {{cliente.nombre}}">
+        <div class="media-body ml-3">
+            <p>Id: {{cliente.id}} - Nombre: <b>{{cliente.nombre}}</b></p>
+            <p>Descripcion: <i>{{cliente.descripcion}}</i></p>
+            <p>Coordenadas: <u>{{cliente.coordenadas}}</u></p>
+            <p>Comentarios: {{cliente.comentarios}}</p>
+
+            <button class="btn btn-danger m-3" (click)="borrarCliente(cliente.id)">DELETE</button>
+            <button class="btn btn-warning m-3" (click)="actualizarCliente(cliente.id)">PUT</button>
+        
+        </div>
+    </div>
+
+</div>
